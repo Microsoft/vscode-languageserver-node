@@ -18,6 +18,7 @@ import { CallHierarchyFeature } from './callHierarchy';
 import { SemanticTokensFeature } from './semanticTokens';
 import { DidCreateFilesFeature, DidDeleteFilesFeature, DidRenameFilesFeature, WillCreateFilesFeature, WillDeleteFilesFeature, WillRenameFilesFeature } from './fileOperations';
 import { LinkedEditingFeature } from './linkedEditingRange';
+import { TypeHierarchyFeature } from './typeHierarchy';
 
 export abstract class CommonLanguageClient extends BaseLanguageClient {
 
@@ -49,6 +50,7 @@ export abstract class CommonLanguageClient extends BaseLanguageClient {
 		this.registerFeature(new WillCreateFilesFeature(this));
 		this.registerFeature(new WillRenameFilesFeature(this));
 		this.registerFeature(new WillDeleteFilesFeature(this));
+		this.registerFeature(new TypeHierarchyFeature(this));
 	}
 }
 
