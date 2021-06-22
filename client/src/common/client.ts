@@ -3252,6 +3252,10 @@ export abstract class BaseLanguageClient {
 
 	private doInitialize(connection: Connection, initParams: InitializeParams): Promise<InitializeResult> {
 		return connection.initialize(initParams).then((result) => {
+
+			// Trick (yanzh): always enable type hierarchy
+			(result as InitializeResult).capabilities.typeHierarchyProvider=true;
+
 			this._resolvedConnection = connection;
 			this._initializeResult = result;
 			this.state = ClientState.Running;
